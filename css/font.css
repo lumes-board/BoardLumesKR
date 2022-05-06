@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "lumes";
+    src: url("../font/NotoSans-Medium.ttf");
+}
+
+body > nav {
+    font-family: "lumes";
+}
