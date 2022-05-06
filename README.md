@@ -1,3 +1,9 @@
+<p align = "center">
+ <img src="https://img.shields.io/github/languages/code-size/lumes-board/BoardLumesKR">
+ <img src="https://img.shields.io/tokei/lines/github/lumes-board/BoardLumesKR">
+ <img src="https://img.shields.io/github/languages/top/lumes-board/BoardLumesKR">
+</p>
+
 # BoardLumesKR
 엉망진창 login.lumes.kr 다시 만들기
  
