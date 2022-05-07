@@ -105,6 +105,8 @@
 
         </div>
 
+        <script src="./js/navbar_toast.js"></script>
+
         <?php
 
             } else {
