@@ -92,7 +92,7 @@
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    나는 취약점 제보 등의 내용을 포함한 모든 사용약관을 숙지하고 동의합니다.
+                    나는 <a href="../../common/userLicense.html" target="_blank"><b>취약점 제보 등의 내용을 포함한 모든 사용약관</b></a>을 숙지하고 동의합니다.
                 </label>
             </div>
 
