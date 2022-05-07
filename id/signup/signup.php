@@ -15,6 +15,9 @@
 
         <?php include('../../common/resource.html'); ?>
 
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+
+
     </head>
 
     <body>
@@ -91,7 +94,7 @@
                 </label>
             </div>
 
-            <button type="submit" id="registrationSubmitButton" class="btn btn-outline-primary">가입하기</button>
+            <button type="button" id="registrationSubmitButton" class="btn btn-outline-primary">가입하기</button>
 
         </form>
         <!-- 회원가입 폼 끝 -->
