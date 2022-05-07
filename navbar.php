@@ -38,8 +38,8 @@
         <!-- 메뉴 고르기 끝 -->
 
         <!-- 버튼 -->
-        <button class="btn btn-success navbar-button" type="button">회원가입</button>
-        <button class="btn btn-primary navbar-button" type="button">로그인</button>
+        <button class="btn btn-success navbar-button" type="button" onclick="location.href='/id/signup/signup.php'">회원가입</button>
+        <button class="btn btn-primary navbar-button" type="button" onclick="location.href='/id/login/login.php'">로그인</button>
         <!-- 버튼 끝 -->
 
     </div>
