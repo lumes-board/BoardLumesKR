@@ -108,7 +108,6 @@
                 grecaptcha.execute('6Ld14s4fAAAAADbIq8oIF47X45r0puf3z44EC69z', {
                     action: 'homepage'
                 }).then(function (token) {
-
                     document.getElementById('g-recaptcha').value = token;
                 });
             });

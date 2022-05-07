@@ -2,31 +2,34 @@
 
     session_start();
     
-    $captcha = $_POST['g-recaptcha'];
-    $secretKey = '6Ld14s4fAAAAAD3o6nwkwFZef5c9mDVuG67xXvDg'; 
-    $ip = $_SERVER['REMOTE_ADDR'];                           
+    require("../../common/verify_reCAPTCHA.php");
     
-    $data = array(
-    'secret' => $secretKey,
-    'response' => $captcha,
-    'remoteip' => $ip  
-    );
-    
-    $url = "https://www.google.com/recaptcha/api/siteverify";
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-    $response = curl_exec($ch);
-    curl_close($ch);
-    
-    $responseKeys = json_decode($response, true);
-    
-    if ($responseKeys["success"]) {
-    echo "reCAPTCHA success";
+    $reCAPTCHApass = check_reCAPTCHA();
+
+    if($reCAPTCHApass === true){
+
+
+
     } else {
-    echo "reCAPTCHA fail";
+
+        ?>
+
+            <script>
+                
+                // reCAPTCHA 인증에 실패함
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Are you a robot?',
+                    footer: 'reCAPTCHA를 성공적으로 통과하셔야 해요!'
+                }).then((result) => {
+                    location.href = "./signup.php";
+                })
+
+            </script>
+
+        <?php
+
     }
+    
  
 ?>
