@@ -1,0 +1,33 @@
+.registration-form {
+    width: 50%;
+
+    margin: auto;
+    margin-top: 40px;
+
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 30px;
+
+}
+
+#welcomeText {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.registration-form > .form-floating {
+    margin-bottom: 10px;
+}
+
+.registration-form > .row {
+    margin-bottom: 20px;
+}
+
+.registration-form > .form-check {
+    margin-bottom: 30px;
+}
+
+#registrationSubmitButton {
+    margin-left: 40%;
+}
