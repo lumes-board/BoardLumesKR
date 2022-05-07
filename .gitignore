@@ -1,0 +1,2 @@
+# DB 연결 정보는 실제 DB 정보 유출 우려가 있는 관계로 올리지 않음
+common/dbconnection.php
