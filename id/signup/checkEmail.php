@@ -44,15 +44,15 @@
 
     } else {
 
-        $query = "SELECT * FROM member WHERE email = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("s", $email);
-
+        $query = "SELECT * FROM member WHERE email = :emailInput";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':emailInput', $email, PDO::PARAM_STR); 
+        
         $stmt->execute();
 
-        $EmailExistence = mysqli_fetch_array($stmt->get_result());
+        $EmailExistence = $stmt->fetchAll(PDO::FETCH_NUM);
 
-        if($EmailExistence === NULL) {
+        if(empty($EmailExistence)) {
 
             // 이메일이 유일하므로, 사용이 가능함
             ?>
@@ -88,9 +88,6 @@
             <?php
 
         }
-
-        $stmt->close();
-        $conn->close();
 
     }
 

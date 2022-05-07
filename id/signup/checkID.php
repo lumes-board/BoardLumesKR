@@ -44,15 +44,15 @@
 
     } else {
 
-        $query = "SELECT * FROM member WHERE id = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("s", $id);
-
+        $query = "SELECT * FROM member WHERE id = :idInput";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':idInput', $id, PDO::PARAM_STR); 
+        
         $stmt->execute();
 
-        $IDExistence = mysqli_fetch_array($stmt->get_result());
+        $IDExistence = $stmt->fetchAll(PDO::FETCH_NUM);
 
-        if($IDExistence === NULL) {
+        if(empty($IDExistence)) {
             
             // ID가 유일하므로, 사용이 가능함
             ?>
@@ -88,9 +88,6 @@
             <?php
 
         }
-
-        $stmt->close();
-        $conn->close();
 
 
     }
