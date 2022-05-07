@@ -68,6 +68,18 @@
 
             if($passwordVerification === true){
 
+                // 로그인 성공 관련 정보를 member 테이블에 기록
+                $loginTime = date("Y-m-d H:i:s");
+                $loginIP   = $_SERVER['REMOTE_ADDR'];
+
+                $query = "UPDATE member SET lastLoginTime = :loginTime, lastLoginIP = :loginIP WHERE id = :userID";
+                $stmt = $db->prepare($query);
+                $stmt->bindParam(':loginTime', $loginTime, PDO::PARAM_STR); 
+                $stmt->bindParam(':loginIP', $loginIP, PDO::PARAM_STR); 
+                $stmt->bindParam(':userID', $userInformation['id'], PDO::PARAM_STR); 
+
+                $stmt->execute();
+
                 // 로그인 성공, 세션에 계정 정보 저장
                 session_start();
                 $_SESSION['id'] = $userInformation['id'];
