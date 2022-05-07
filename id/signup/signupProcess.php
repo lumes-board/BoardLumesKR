@@ -76,6 +76,7 @@
 
         $userIPAddress    = $_SERVER['REMOTE_ADDR'];
         $password         = password_hash($password, PASSWORD_DEFAULT);         // 패스워드는 안전하게 hash 처리하도록 한다.
+        $datetime         = date("Y-m-d H:i:s");
         
         // 유저가 실제로 있는지 검증
         $query = "SELECT * FROM member WHERE id = :idInput or email = :emailInput";
@@ -100,17 +101,17 @@
             //      guestbookQty      = 0
             //      lastLoginTime     = NULL (로그인시 반영됨)
             //      lastLoginIP       = NULL (로그인시 반영됨)
-            //      registrationTime  = current_timestamp()
             //
 
-            $query = "INSERT INTO member (id, nickname, password, email, registrationIP) 
-                      VALUES (:idInput, :nicknameInput, :passwordInput, :emailInput, :registrationIP)";
+            $query = "INSERT INTO member (id, nickname, password, email, registrationTime, registrationIP) 
+                      VALUES (:idInput, :nicknameInput, :passwordInput, :emailInput, :registrationTime, :registrationIP)";
             $stmt = $db->prepare($query);
 
             $stmt->bindParam(':idInput', $id, PDO::PARAM_STR);
             $stmt->bindParam(':nicknameInput', $nickname, PDO::PARAM_STR);
             $stmt->bindParam(':passwordInput', $password, PDO::PARAM_STR);
             $stmt->bindParam(':emailInput', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':registrationTime', $datetime, PDO::PARAM_STR);
             $stmt->bindParam(':registrationIP', $userIPAddress, PDO::PARAM_STR);
 
             
