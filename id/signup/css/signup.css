@@ -28,6 +28,16 @@
     margin-bottom: 30px;
 }
 
+#checkIDValidityButton {
+    height: 70%;
+}
+
+#checkEmailValidityButton {
+    height: 70%;
+    font-size: 13px;
+    font-weight: bold;
+}
+
 #registrationSubmitButton {
     margin-left: 40%;
 }

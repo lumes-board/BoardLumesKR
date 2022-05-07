@@ -45,47 +45,60 @@
         <!-- 회원가입 폼 -->
         <form class="registration-form" action="signupProcess.php" enctype="multipart/form-data" method="POST">
 
-            <h3 id="welcomeText">WELCOME!</h3>
+            <h3 id="welcomeText">WELCOME! 👋</h3>
 
             <input type="hidden" id="g-recaptcha" name="g-recaptcha">
 
             <div class="row">
                 <div class="col-md-10 form-floating">
-                    <input type="text" class="form-control" id="userID" placeholder="&nbsp;&nbsp;ID" aria-describedby="userIDHelp">
+                    <input type="text" class="form-control" name="userID" id="userID" placeholder="&nbsp;&nbsp;ID" aria-describedby="userIDHelp">
                     <label for="userID">&nbsp;&nbsp;ID</label>
                     <div id="userIDHelp" class="form-text">~30바이트, ID로는 영어소문자/숫자/언더바(_)만 사용하실 수 있습니다.</div>
                 </div>
-                <div class="col align-self-center">
-                    <button type="button" id="checkIDValidityButton" class="btn btn-outline-secondary btn-lg">ID Check</button>
-                </div>
-            </div>
-
-            <div class="form-floating">
-                <input type="text" class="form-control" id="userNickname" placeholder="유저 닉네임" aria-describedby="userNicknameHelp">
-                <label for="userNickname">유저 닉네임</label>
-                <div id="userNicknameHelp" class="form-text">~255바이트, 여기서 사용할 닉네임을 만드세요.</div>
-            </div>
-
-            <div class="row">
-                <div class="col form-floating">
-                    <input type="password" class="form-control" id="userPassword1" placeholder="&nbsp;&nbsp;비밀번호">
-                    <label for="userPassword1">&nbsp;&nbsp;비밀번호</label>
-                </div>
-
-                <div class="col form-floating">
-                    <input type="password" class="form-control" id="userPassword2" placeholder="&nbsp;&nbsp;비밀번호(재입력)">
-                    <label for="userPassword2">&nbsp;&nbsp;비밀번호(재입력)</label>
+                <div class="col">
+                    <button type="button" id="checkIDValidityButton" class="btn btn-secondary">ID Check</button>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-10 form-floating">
-                    <input type="email" class="form-control" id="userEmail" placeholder="&nbsp;&nbsp;유저 이메일" aria-describedby="userEmailHelp">
+                    <input type="text" class="form-control" name="userNickname" id="userNickname" placeholder="&nbsp;&nbsp;유저 닉네임" aria-describedby="userNicknameHelp">
+                    <label for="userNickname">&nbsp;&nbsp;유저 닉네임</label>
+                    <div id="userNicknameHelp" class="form-text">~255바이트, 여기서 사용할 닉네임을 만드세요.</div>
+                </div>
+                <div class="col">
+                    <!-- do nothing, just for aligning -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-10 form-floating">
+                    <div class="row">
+                        <div class="col form-floating">
+                            <input type="password" class="form-control" name="userPassword1" id="userPassword1" placeholder="&nbsp;&nbsp;비밀번호">
+                            <label for="userPassword1">&nbsp;&nbsp;비밀번호</label>
+                        </div>
+
+                        <div class="col form-floating">
+                            <input type="password" class="form-control" name="userPassword2" id="userPassword2" placeholder="&nbsp;&nbsp;비밀번호(재입력)">
+                            <label for="userPassword2">&nbsp;&nbsp;비밀번호(재입력)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- do nothing, just for aligning -->
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-10 form-floating">
+                    <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="&nbsp;&nbsp;유저 이메일" aria-describedby="userEmailHelp">
                     <label for="userEmail">&nbsp;&nbsp;이메일 주소</label>
                     <div id="userEmailHelp" class="form-text">나중에 인증 등에 필요할 수 있으니 사용하시는 이메일 주소를 입력하세요.</div>
                 </div>
-                <div class="col align-self-center">
-                    <button type="button" id="checkEmailValidityButton" class="btn btn-outline-secondary btn-lg">E-mail Check</button>
+                <div class="col">
+                    <button type="button" id="checkEmailValidityButton" class="btn btn-secondary">E-mail Check</button>
                 </div>
             </div>
 
@@ -96,7 +109,7 @@
                 </label>
             </div>
 
-            <button type="button" id="registrationSubmitButton" class="btn btn-outline-primary">가입하기</button>
+            <button type="button" id="registrationSubmitButton" class="btn btn-primary">가입하기</button>
 
         </form>
         <!-- 회원가입 폼 끝 -->
