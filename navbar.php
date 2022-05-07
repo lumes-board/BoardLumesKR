@@ -39,7 +39,7 @@
 
         <?php 
         
-            if(isset($_SESSION)) {
+            if(isset($_SESSION['id'])) {
 
                 require("./common/dbconnection.php");
 
