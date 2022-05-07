@@ -75,6 +75,7 @@
         }
 
         $userIPAddress    = $_SERVER['REMOTE_ADDR'];
+        $password         = password_hash($password, PASSWORD_DEFAULT);         // 패스워드는 안전하게 hash 처리하도록 한다.
         
         // 유저가 실제로 있는지 검증
         $query = "SELECT * FROM member WHERE id = :idInput or email = :emailInput";
