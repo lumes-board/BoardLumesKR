@@ -23,7 +23,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
 
-                <a class="navbar-brand" href="./index.php">📟 board.lumes.kr</a>
+                <a class="navbar-brand" href="../../index.php">📟 board.lumes.kr</a>
 
                 <!-- 메뉴 고르기 -->
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -40,14 +40,19 @@
         <!-- 간단한 상단 바 끝 -->
 
         <!-- 회원가입 폼 -->
-        <form class="registration-form" action="signupProcess.php" method="POST">
+        <form class="registration-form" action="" method="POST">
 
             <h3 id="welcomeText">WELCOME!</h3>
 
-            <div class="form-floating">
-                <input type="text" class="form-control" id="userID" placeholder="ID" aria-describedby="userIDHelp">
-                <label for="userID">ID</label>
-                <div id="userIDHelp" class="form-text">~30바이트, ID로는 영어대소문자/숫자/언더바(_)만 사용하실 수 있습니다.</div>
+            <div class="row">
+                <div class="col-md-10 form-floating">
+                    <input type="text" class="form-control" id="userID" placeholder="&nbsp;&nbsp;ID" aria-describedby="userIDHelp">
+                    <label for="userID">&nbsp;&nbsp;ID</label>
+                    <div id="userIDHelp" class="form-text">~30바이트, ID로는 영어소문자/숫자/언더바(_)만 사용하실 수 있습니다.</div>
+                </div>
+                <div class="col align-self-center">
+                    <button type="button" id="checkIDValidityButton" class="btn btn-outline-secondary btn-lg">ID Check</button>
+                </div>
             </div>
 
             <div class="form-floating">
@@ -85,6 +90,8 @@
 
         </form>
         <!-- 회원가입 폼 끝 -->
+
+        <script src="./signupValidation.js"></script>
 
     </body>
 
