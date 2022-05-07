@@ -73,10 +73,15 @@
                 </div>
             </div>
 
-            <div class="form-floating">
-                <input type="email" class="form-control" id="userEmail" placeholder="유저 이메일" aria-describedby="userEmailHelp">
-                <label for="userEmail">이메일 주소</label>
-                <div id="userEmailHelp" class="form-text">나중에 인증 등에 필요할 수 있으니 사용하시는 이메일 주소를 입력하세요.</div>
+            <div class="row">
+                <div class="col-md-10 form-floating">
+                    <input type="email" class="form-control" id="userEmail" placeholder="&nbsp;&nbsp;유저 이메일" aria-describedby="userEmailHelp">
+                    <label for="userEmail">&nbsp;&nbsp;이메일 주소</label>
+                    <div id="userEmailHelp" class="form-text">나중에 인증 등에 필요할 수 있으니 사용하시는 이메일 주소를 입력하세요.</div>
+                </div>
+                <div class="col align-self-center">
+                    <button type="button" id="checkEmailValidityButton" class="btn btn-outline-secondary btn-lg">E-mail Check</button>
+                </div>
             </div>
 
             <div class="form-check">
