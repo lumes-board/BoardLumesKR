@@ -71,7 +71,7 @@
                                 text: '',
                                 footer: '심각한 수준의 서비스 정책 위반이 확인되어 계정이 영구 정지되었습니다.'
                             }).then((result) => {
-                                location.href = "./logout/logoutProcess.php";
+                                location.href = "./id/logout/logoutProcess.php";
                             });
 
                         </script>
