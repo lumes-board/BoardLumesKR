@@ -15,7 +15,7 @@
 
         <?php include('../../common/resource.html'); ?>
 
-        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render=6Ld14s4fAAAAADbIq8oIF47X45r0puf3z44EC69z"></script>
 
 
     </head>
@@ -43,9 +43,11 @@
         <!-- 간단한 상단 바 끝 -->
 
         <!-- 회원가입 폼 -->
-        <form class="registration-form" action="" method="POST">
+        <form class="registration-form" action="signupProcess.php" enctype="multipart/form-data" method="POST">
 
             <h3 id="welcomeText">WELCOME!</h3>
+
+            <input type="hidden" id="g-recaptcha" name="g-recaptcha">
 
             <div class="row">
                 <div class="col-md-10 form-floating">
@@ -100,6 +102,17 @@
         <!-- 회원가입 폼 끝 -->
 
         <script src="./signupValidation.js"></script>
+
+        <script>
+            grecaptcha.ready(function () {
+                grecaptcha.execute('6Ld14s4fAAAAADbIq8oIF47X45r0puf3z44EC69z', {
+                    action: 'homepage'
+                }).then(function (token) {
+
+                    document.getElementById('g-recaptcha').value = token;
+                });
+            });
+        </script>
 
     </body>
 
