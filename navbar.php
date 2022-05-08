@@ -41,7 +41,7 @@
         
             if(isset($_SESSION['id'])) {
 
-                require("./common/dbconnection.php");
+                require(dirname(__FILE__) . "/common/dbconnection.php");
 
                 // 경험치(exp)에 대한 내용은 세션과 데이터베이스 간 차이로부터 발생하는
                 // 오류를 없애기 위해 무조건 DB에서 데이터를 그때그때 받아와서 사용
@@ -94,10 +94,9 @@
                 data-placement="bottom" title="성공적으로 로그인하셨어요!">
                 <?php echo $_SESSION['id'] ?>님
             </button>
-            <!-- <a role="button" class="btn btn-primary" href="/mypage/mypage.php">
+            <a role="button" class="btn btn-primary" href="/id/mypage/mypage.php">
                 마이페이지
-            </a> -->
-            <!-- 마이페이지는 차후에 구현하도록 하자. -->
+            </a>
             <button type="button" class="btn btn-danger" id="logout" data-container="body" data-toggle="popover"
                 data-placement="bottom" title="세션을 파기합니다.">
                 로그아웃
@@ -105,7 +104,7 @@
 
         </div>
 
-        <script src="./js/navbar_toast.js"></script>
+        <script src="/js/navbar_toast.js"></script>
 
         <?php
 
@@ -114,8 +113,8 @@
         ?>
 
         <!-- 버튼 -->
-        <button class="btn btn-success navbar-button" type="button" onclick="location.href='./id/signup/signup.php'">회원가입</button>
-        <button class="btn btn-primary navbar-button" type="button" onclick="location.href='./id/login/login.php'">로그인</button>
+        <button class="btn btn-success navbar-button" type="button" onclick="location.href='/id/signup/signup.php'">회원가입</button>
+        <button class="btn btn-primary navbar-button" type="button" onclick="location.href='/id/login/login.php'">로그인</button>
         <!-- 버튼 끝 -->
 
         <?php

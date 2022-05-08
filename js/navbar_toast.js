@@ -39,7 +39,7 @@ $("#logout").on("click", function () {
                 'See you soon!',
                 '로그아웃 되었습니다.',
                 'success'
-            ).then(() => location.href = "./id/logout/logoutProcess.php");
+            ).then(() => location.href = "/id/logout/logoutProcess.php");
         }
     });
 });
