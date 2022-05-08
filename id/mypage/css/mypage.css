@@ -12,3 +12,14 @@
     /* text-align: center; */
 
 }
+
+#changeUserInfoButtonGroup {
+
+    font-family: "general";
+    width: 70%;
+
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
