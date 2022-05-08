@@ -35,7 +35,7 @@
                     text: '이메일 주소가 유효하지 않습니다.',
                     footer: '이메일 주소는 통상적인 이메일 주소의 형식에 부합해야 하며, 255글자를 넘어갈 수 없습니다.'
                 }).then((result) => {
-                    location.href = "./signup.php";
+                    window.close();
                 })
                 
             </script>
@@ -63,7 +63,7 @@
                         title: 'Look Good!',
                         text: '해당 Email 주소는 사용가능합니다.',
                     }).then((result) => {
-                        location.href = "./signup.php";
+                        window.close();
                     })
                 </script>
 
@@ -81,7 +81,7 @@
                         text: '해당 Email 주소는 누가 사용중입니다.',
                         footer: '이미 등록된 계정이 있지 않은지 생각해보시거나, 다른 Email 주소를 사용해 주세요.'
                     }).then((result) => {
-                        location.href = "./signup.php";
+                        window.close();
                     })
                 </script>
 

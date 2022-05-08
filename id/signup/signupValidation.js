@@ -14,14 +14,20 @@ const agreementCheckbox = document.querySelector("#flexCheckDefault");
 // ID 확인하기
 checkIDValidityButton.addEventListener("click", function (e) {
 
-    location.href = "checkID.php?id=" + userID.value;
+    window.open(
+        "checkID.php?id=" + userID.value,
+        "_blank"
+    );
 
 });
 
 // E-mail 확인하기
 checkEmailValidityButton.addEventListener("click", function (e) {
 
-    location.href = "checkEmail.php?email=" + userEmail.value;
+    window.open(
+        "checkEmail.php?email=" + userEmail.value,
+        "_blank"
+    );
 
 });
 

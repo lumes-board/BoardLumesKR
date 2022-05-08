@@ -35,7 +35,7 @@
                     text: '만드신 ID가 정해진 기준을 충족시키지 못합니다.',
                     footer: 'ID는 반드시 1글자 이상의 영어 대소문자, 숫자, 그리고 언더바(_)로만 이루어져야 하며, 30바이트를 초과할 수 없습니다.'
                 }).then((result) => {
-                    location.href = "./signup.php";
+                    window.close();
                 })
                 
             </script>
@@ -63,7 +63,7 @@
                         title: 'Look Good!',
                         text: '해당 ID는 사용가능합니다.',
                     }).then((result) => {
-                        location.href = "./signup.php";
+                        window.close();
                     })
                 </script>
 
@@ -81,7 +81,7 @@
                         text: '해당 ID는 누가 사용중입니다.',
                         footer: '다른 고유한 ID를 만들어 보세요!'
                     }).then((result) => {
-                        location.href = "./signup.php";
+                        window.close();
                     })
                 </script>
 
