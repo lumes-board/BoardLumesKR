@@ -1,2 +1,5 @@
 # DB 연결 정보는 실제 DB 정보 유출 우려가 있는 관계로 올리지 않음
 /common/dbconnection.php
+
+# reCAPTCHA v3 사이트 키 정보가 담긴 아래 파일은 github Repository에 올리지 않음
+/common/verify_reCAPTCHA.php
