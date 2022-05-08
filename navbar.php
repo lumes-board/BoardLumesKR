@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="./index.php">📟 board.lumes.kr</a>
+        <a class="navbar-brand" href="/index.php">📟 board.lumes.kr</a>
 
         <!-- 메뉴 고르기 -->
         <div class="collapse navbar-collapse" id="navbarNav">
