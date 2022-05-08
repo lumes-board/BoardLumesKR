@@ -57,7 +57,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><?php echo $_SESSION['id'] ?></td>
+                    <td><b><?php echo $_SESSION['id'] ?><b></td>
                     <td><?php echo $email ?></td>
                     <td><?php echo $nickname ?></td>
                     <td><?php echo number_format($exp) ?> <span style="color: gray; ">EXP</span></td>
