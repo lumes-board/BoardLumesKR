@@ -145,7 +145,7 @@
                     title: 'Are you a robot?',
                     footer: 'reCAPTCHA를 성공적으로 통과하셔야 해요!'
                 }).then((result) => {
-                    location.href = "./signup.php";
+                    location.href = "./login.php";
                 })
 
             </script>
