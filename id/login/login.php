@@ -15,8 +15,6 @@
 
         <?php include('../../common/resource.html'); ?>
 
-        <script src="https://www.google.com/recaptcha/api.js?render=6Ld14s4fAAAAADbIq8oIF47X45r0puf3z44EC69z"></script>
-
 
     </head>
 
