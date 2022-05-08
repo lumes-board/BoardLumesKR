@@ -1,0 +1,12 @@
+#userInfoTable {
+
+    width: 70%;
+
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Bootstrap에서는 text-align: center대신 table 클래스에 text-center를 넣는다. */
+    /* text-align: center; */
+
+}
