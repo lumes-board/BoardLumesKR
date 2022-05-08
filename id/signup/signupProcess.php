@@ -17,7 +17,7 @@
 
     session_start();
     
-    require("../../common/verify_reCAPTCHA.php");
+    require("../../common/reCAPTCHA/verify_reCAPTCHA_server.php");
     require("../../common/dbconnection.php");
     include('../../common/resource.html');
     
