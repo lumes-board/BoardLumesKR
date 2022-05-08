@@ -24,7 +24,7 @@
 - [ ] 비밀번호 찾기
 - [x] 회원약관 등 기본 규칙 정하기
 
-#### 기본저인 틀 만들기 II
+#### 기본적인 틀 만들기 II
 - [x] 유저 역할(role) 부여하기
 - [ ] 개인정보 변경하기
 - [ ] 계정 영구 정지
@@ -93,3 +93,28 @@
 
 ?>
   ```
+  <br><br>
+- **데이터베이스** 테이블 구조
+1. `member` 테이블 : 사용자들의 정보에 대한 내용을 다룹니다.
+```sql
+--
+-- 테이블 구조 `member`
+--
+
+CREATE TABLE IF NOT EXISTS `member` (
+  `idx` int(20) NOT NULL auto_increment,
+  `id` varchar(30) NOT NULL,
+  `nickname` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `exp` double NOT NULL default '1000',
+  `expTransactionQty` double NOT NULL default '0',
+  `guestbookQty` int(20) NOT NULL default '0',
+  `role` varchar(30) NOT NULL default 'user',
+  `lastLoginTime` datetime default NULL,
+  `lastLoginIP` varchar(40) default NULL,
+  `registrationTime` datetime NOT NULL,
+  `registrationIP` varchar(40) NOT NULL,
+  PRIMARY KEY  (`idx`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+```
