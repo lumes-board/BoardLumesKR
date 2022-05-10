@@ -6,14 +6,15 @@
 </p>
 
 # BoardLumesKR
-**엉망진창 망가져버린 login.lumes.kr 다시 만들기**   
-이전 프로젝트 : https://github.com/x3onkait/LoginLumesKR
+**망가져버린 login.lumes.kr 다시 만들기**   
+
+`"아아... login.lumes.kr이 비록 취약점과 엉망진창 코드로 인해 박살났지만 그래도 다시 더 멋지게 만들고 싶다..."`   
+이전 프로젝트 : https://github.com/x3onkait/LoginLumesKR  
+
+현재 이 프로젝트는 웹 서버에 호스팅 되어 있으며, <a href="http://board.lumes.kr/">`board.lumes.kr`</a>에서 확인해보실 수 있어요. 기능별로 봤을 때 완성 및 검증이 어느정도 되어 안정적으로 서비스를 할 수 있다고 판단되면 그때 웹 서버에 올리고 있어요.
  
 * * *
 ### 언젠가 만들어질 기능들
-`지금은 기회가 되지 않지만... 언젠가 취약점으로 박살 난 login.lumes.kr을 어떻게든 해 보고 싶다.`   
-
--> **Prepared Statement** 방식으로 SQL을 다루고 입출력 모두에 `htmlspecialchars()` 같은 함수를 적용한다. 입출력 필터링을 신경쓰고, 어뷰징이나 공백 테러, 도배질 등을 막기 위해 신경을 쓰도록 한다.
 
 ##### 기본적인 틀 만들기
 - [x] 기본적인 데코레이션
