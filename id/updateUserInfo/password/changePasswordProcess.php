@@ -109,10 +109,10 @@
                                 icon: 'success',
                                 title: '성공',
                                 text: '비밀번호가 변경되었습니다.',
-                                footer: '지금 로그인해 보세요!'
+                                footer: '다음 로그인부터는 변경된 비밀번호로 로그인하세요.'
                             }).then((result) => {
                                 
-                                location.href = "../../logout/logoutProcess.php";
+                                window.close();
 
                             })
 
