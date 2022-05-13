@@ -86,47 +86,77 @@
 
             } else {
 
-            
-                try {
+                $id              = $_SESSION['id'];
+                $renewedPassword = password_hash($newPassword1, PASSWORD_DEFAULT);
 
-                    $id              = $_SESSION['id'];
-                    $renewedPassword = password_hash($newPassword1, PASSWORD_DEFAULT);
+                // 먼저, 기존에 사용하는 비밀번호가 맞는지 검사해본다.
+                $query = "SELECT * FROM member WHERE id = :id";
+                $stmt = $db->prepare($query);
+                $stmt->bindParam(':id', $id, PDO::PARAM_STR); 
 
-                    $query = "UPDATE member SET password = :renewedPassword WHERE id = :id";
-                    $stmt = $db->prepare($query);
-                    $stmt->bindParam(':renewedPassword', $renewedPassword, PDO::PARAM_STR); 
-                    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+                $stmt->execute();
 
-                    $stmt->execute();
+                $userInformation = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                    // 여기까지 잘 수행된 경우 비밀번호 업데이트가 잘 된 것
+                $passwordVerification = password_verify($currentPassword, $userInformation['password']);
 
+                if($passwordVerification === true) {
+
+                    // 기존 비밀번호 인증에 성공함. 비밀번호 변경을 허가함.
+
+                    try{
+
+                        // 비밀번호를 변경한다.
+                        $query = "UPDATE member SET password = :renewedPassword WHERE id = :id";
+                        $stmt = $db->prepare($query);
+                        $stmt->bindParam(':renewedPassword', $renewedPassword, PDO::PARAM_STR); 
+                        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+
+                        $stmt->execute();
+
+                        // 여기까지 잘 수행된 경우 비밀번호 업데이트가 잘 된 것
+                        ?>
+                            <script>
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: '성공',
+                                    text: '비밀번호가 변경되었습니다.',
+                                    footer: '다음 로그인부터는 변경된 비밀번호로 로그인하세요.'
+                                }).then((result) => {
+                                    window.close();
+                                })
+
+                            </script>
+                        <?php 
+
+                    } catch (PDOException $PDOerr) {
+
+                        die($PDOerr);
+
+                    }
+
+                } else {
+
+                    // 기존 패스워드 인증에 성공하지 못함. 비밀번호 변경을 거부함.
                     ?>
-
                         <script>
 
                             Swal.fire({
-                                icon: 'success',
-                                title: '성공',
-                                text: '비밀번호가 변경되었습니다.',
-                                footer: '다음 로그인부터는 변경된 비밀번호로 로그인하세요.'
+                                icon: 'error',
+                                title: '인증 오류',
+                                footer: '기존에 사용하시던 비밀번호가 올바르지 않습니다. 다시 정확하게 입력해 주세요.'
                             }).then((result) => {
-                                
                                 window.close();
-
                             })
 
                         </script>
-
                     <?php 
-
-                } catch (PDOException $PDOerr) {
-
-                    die($PDOerr);
 
                 }
 
             }
+
 
         ?>
 
