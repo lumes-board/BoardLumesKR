@@ -73,7 +73,7 @@
         <div class="btn-group d-flex justify-content-center" role="group" id="changeUserInfoButtonGroup">
             <button type="button" class="btn btn-outline-primary" onclick="window.open('/id/updateUserInfo/email/changeEmail.php')">Email 주소 변경하기</button>
             <button type="button" class="btn btn-outline-primary" onclick="window.open('/id/updateUserInfo/nickname/changeNickname.php')">닉네임 변경하기</button>
-            <button type="button" class="btn btn-outline-primary">비밀번호 변경하기</button>
+            <button type="button" class="btn btn-outline-primary" onclick="window.open('/id/updateUserInfo/password/changePassword.php')">비밀번호 변경하기</button>
         </div>
 
         <!-- 유저 개인정보 변경 버튼 그룹 끝 -->
