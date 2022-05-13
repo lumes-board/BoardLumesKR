@@ -110,6 +110,27 @@
 
                 <?php
 
+            } else {
+
+                    // 비밀번호가 틀린 경우.
+
+                    ?>
+
+                    <script>
+
+                        Swal.fire({
+                            icon: 'question',
+                            title: '누구세요?',
+                            text: '비밀번호가 틀렸습니다.',
+                            footer: '단지 실수였기를 바랍니다.'
+                        }).then((result) => {
+                            location.href = "./login.php";
+                        })
+
+                    </script>
+
+                <?php
+
             }
 
         } else {
