@@ -1,0 +1,25 @@
+#writeMessagesForm {
+
+    font-family: "general";
+
+    width: 80%;
+
+    margin: auto;
+    margin-top: 40px;
+
+}
+
+#writeMessagesForm > #writer {
+
+    width: 30%;
+
+    display:inline;
+    margin-bottom: 10px;
+
+}
+
+#writeMessagesForm > #textLengthStatus {
+
+    margin-top: 10px;
+
+}

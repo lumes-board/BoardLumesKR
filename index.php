@@ -25,6 +25,9 @@
         <!-- 네비게이션 바 -->
         <?php include("navbar.php"); ?>
 
+        <!-- 보드(게시판) -->
+        <?php include("board/writeMessages.php"); ?>
+
     </body>
 
 </html>
