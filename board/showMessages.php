@@ -39,8 +39,8 @@
     foreach($boardData as $rows) {
         
         $messageID          = $rows['idx'];
-        $writerID           = $rows['id'];
-        $writerMessage      = $rows['message'];
+        $writerID           = addslashes(htmlspecialchars($rows['id']));
+        $writerMessage      = addslashes(htmlspecialchars($rows['message']));
         $messageDate        = $rows['date'];
         $writerIP           = $rows['ip'];
 
