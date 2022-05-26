@@ -27,6 +27,7 @@
 
         <!-- 보드(게시판) -->
         <?php include("board/writeMessages.php"); ?>
+        <?php include("board/showMessages.php"); ?>
 
     </body>
 
