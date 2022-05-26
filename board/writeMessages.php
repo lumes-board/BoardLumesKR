@@ -18,7 +18,9 @@
 
         <!-- 로그인 된 사람만 글을 쓸 수 있음 -->
 
-        <form action="./processMessage.php" method="POST" id="writeMessagesForm">
+        <form action="./board/processMessages.php" method="POST" id="writeMessagesForm">
+
+            <input type="hidden" id="g-recaptcha" name="g-recaptcha">
 
             <input class="form-control" id="writer" type="text" value="@<?php echo $_SESSION['id'] ?>"readonly>
 
@@ -29,14 +31,14 @@
             </div>
 
             <div class="form-floating">
-                <textarea class="form-control" id="messageContent" 
+                <textarea class="form-control" id="messageContent" name="message"
                           placeholder="메시지를 남겨보세요... (~1,500 바이트)" id="floatingTextarea"
                           style="height: 100px"></textarea>
                 <label for="floatingTextarea">메시지를 남겨보세요...</label>
             </div>
             
             
-            <button type="button" class="btn btn-primary float-end" style="margin-top: 10px;">메시지 등록하기</button>
+            <button type="submit" class="btn btn-primary float-end" style="margin-top: 10px;">메시지 등록하기</button>
             
 
             <button type="button" id="textLengthStatus" class="btn btn-secondary">
@@ -67,6 +69,8 @@
         <?php } ?>
 
         <script src="./board/js/countmessageText.js"></script>
+
+        <?php include("./common/reCAPTCHA/verify_reCAPTCAH_client.html"); ?>
 
 
     </body>
