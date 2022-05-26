@@ -2,7 +2,8 @@
 
     <head>
 
-        <!-- 필요한 resource들은 이 파일이 소속된 /index.html에 전부 연결되어 있음. -->
+        <!-- 기본적으로 필요한 resource들은 이 파일이 소속된 /index.html에 전부 연결되어 있음. -->
+        <link rel="stylesheet" href="./board/css/showMessages.css">
 
     </head>
 
@@ -16,13 +17,13 @@
 
     require("./common/dbconnection.php");
     
-    $query = "SELECT * FROM board ORDER BY idx ASC LIMIT 50";
+    $query = "SELECT * FROM board ORDER BY idx DESC LIMIT 50";
     $stmt = $db->prepare($query);
     $stmt->execute();
 
     $boardData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo '<table class="table">';
+    echo '<table class="table" id="messageTable">';
         echo '<thead class="table-light">';
             echo '<tr>';
                 echo '<th scope="col" style="text-align: center;">#</th>';
