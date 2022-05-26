@@ -27,6 +27,7 @@
         echo '<thead class="table-light">';
             echo '<tr>';
                 echo '<th scope="col" style="text-align: center;">#</th>';
+                echo '<th scope="col" style="text-align: center;">작성자</th>';
                 echo '<th scope="col" style="text-align: center;">메시지 내용</th>';
                 echo '<th scope="col" style="text-align: center;">작성일자</th>';
             echo '</tr>';
@@ -38,12 +39,14 @@
     foreach($boardData as $rows) {
         
         $messageID          = $rows['idx'];
+        $writerID           = $rows['id'];
         $writerMessage      = $rows['message'];
         $messageDate        = $rows['date'];
         $writerIP           = $rows['ip'];
 
             echo '<tr>';
                 echo '<th scope="row" style="text-align: center;">' . $messageID . '</th>';
+                echo '<td style="text-align: center;">' . $writerID . '</td>';
                 echo '<td>' . $writerMessage . '</td>';
                 echo '<td style="text-align: center;">' . $messageDate . '</td>';
             echo '</tr>';
