@@ -56,7 +56,6 @@
             'ip'            => $_SERVER['REMOTE_ADDR']
         ];
 
-        // 유저가 실제로 있는지 검증
         $query = "INSERT INTO board (id, message, date, ip)
                          VALUES (:id, :message, :date, :ip)";
         $stmt = $db->prepare($query);
