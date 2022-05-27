@@ -47,7 +47,7 @@
             echo '<tr>';
                 echo '<th scope="row" style="text-align: center;">' . $messageID . '</th>';
                 echo '<td style="text-align: center;">' . $writerID . '</td>';
-                echo '<td>' . $writerMessage . '</td>';
+                echo '<td style="word-break: break-all">' . $writerMessage . '</td>';
                 echo '<td style="text-align: center;">' . $messageDate . '</td>';
             echo '</tr>';
 
