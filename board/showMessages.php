@@ -40,7 +40,7 @@
         
         $messageID          = $rows['idx'];
         $writerID           = addslashes(htmlspecialchars($rows['id']));
-        $writerMessage      = addslashes(htmlspecialchars($rows['message']));
+        $writerMessage      = $rows['message'];
         $messageDate        = $rows['date'];
         $writerIP           = $rows['ip'];
 
