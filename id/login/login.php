@@ -62,6 +62,6 @@
 
     </body>
 
-    <?php include("../../common/reCAPTCHA/verify_reCAPTCAH_client.html"); ?>
+    <?php include("../../common/reCAPTCHA/verify_reCAPTCHA_client.html"); ?>
 
 </html>
