@@ -66,6 +66,17 @@
             $stmt->execute($addMessageOnBoardData);
             $db->commit();
 
+            // 유저 통계 업데이트
+            $updateUserStatus = "UPDATE member 
+                                  SET exp = exp + :userEXPReward, guestbookQty	= guestbookQty + 1 
+                                   WHERE id = :id";
+            $stmt = $db->prepare($updateUserStatus);
+            $stmt->bindParam(':userEXPReward', rand(500, 800), PDO::PARAM_STR); 
+            $stmt->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);
+
+            $stmt->execute();
+            
+
             echo '<script>location.href="../index.php"</script>';
 
         } catch(PDOException $PDOerr) {
