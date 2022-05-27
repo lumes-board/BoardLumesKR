@@ -1,6 +1,5 @@
 <p align = "center">
  <img src="https://img.shields.io/github/languages/code-size/lumes-board/BoardLumesKR">
- <img src="https://img.shields.io/tokei/lines/github/lumes-board/BoardLumesKR">
  <img src="https://img.shields.io/github/languages/top/lumes-board/BoardLumesKR">
  <img src="https://img.shields.io/website?down_color=lightgray&down_message=offline&up_color=blue&up_message=online&url=http%3A%2F%2Fboard.lumes.kr">
 </p>
@@ -40,7 +39,7 @@
 
 * * *
 ### NECESSITIES
- - 웹 페이지 구동에 필요한 공통 파일들 중, 도배 등 자동화된 봇 활동을 감지하고 차단하기 위하여, Google에서 제공하는 reCAPTCHA v3이 활성화 되어 있습니다. 일단 구글 reCAPTCAH admin console에서 v3버전으로 reCAPTCHA를 발급받은 다음, `/common/reCAPTCHA/` 디레터리 안에 별도로 아래 파일을 만들어 통합을 시켜야 합니다.<br><br>
+ - 웹 페이지 구동에 필요한 공통 파일들 중, 도배 등 자동화된 봇 활동을 감지하고 차단하기 위하여, Google에서 제공하는 reCAPTCHA v3이 활성화 되어 있습니다. 일단 구글 reCAPTCAH admin console에서 v3버전으로 reCAPTCHA를 발급받은 다음, `/common/reCAPTCHA/` 내에 아래 두 파일 내용(예시 파일은 들어 있습니다.)을 보고 `[...]` 부분을 수정해야 합니다.<br><br>
 1. **사이트 측** 통합 (client-side) : `\common\reCAPTCHA\verify_reCAPTCAH_client.html`
  ```html
 <!-- reCAPTCHA v3 사이트 측 통합 -->
