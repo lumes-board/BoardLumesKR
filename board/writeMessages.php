@@ -68,7 +68,7 @@
 
         <?php } ?>
 
-        <script src="./board/js/countmessageText.js"></script>
+        <script src="./board/js/countMessageText.js"></script>
 
         <?php include("./common/reCAPTCHA/verify_reCAPTCAH_client.html"); ?>
 
