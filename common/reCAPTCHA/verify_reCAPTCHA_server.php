@@ -3,7 +3,7 @@
   function check_reCAPTCHA(){
 
       $captcha = $_POST['g-recaptcha'];
-      $secretKey = '6LelKNIfAAAAAJ-K2lZ6E9jlj3u5fkAtystTKrQ-'; 
+      $secretKey = '[여기에_서버_측_reCAPTCHA키를_넣으세요]'; 
       $ip = $_SERVER['REMOTE_ADDR'];                           
       
       $data = array(
