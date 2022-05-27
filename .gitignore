@@ -2,4 +2,4 @@
 /common/dbconnection.php
 
 # reCAPTCHA v3 사이트 키 정보가 담긴 아래 파일은 github Repository에 올리지 않음
-/common/reCAPTCHA/*
+/common/reCAPTCHA/
