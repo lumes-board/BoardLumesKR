@@ -118,3 +118,19 @@ CREATE TABLE IF NOT EXISTS `member` (
   PRIMARY KEY  (`idx`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 ```
+
+2. `board` 테이블 : 유저들이 등록한 게시글이 저장되는 곳입니다.
+```sql
+--
+-- 테이블 구조 `board`
+--
+
+CREATE TABLE IF NOT EXISTS `board` (
+  `idx` int(30) NOT NULL auto_increment,
+  `id` varchar(30) NOT NULL,
+  `message` varchar(1500) NOT NULL,
+  `date` datetime NOT NULL,
+  `ip` varchar(40) NOT NULL COMMENT 'login.lumes.kr 멤버들 목록',
+  PRIMARY KEY  (`idx`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+```
