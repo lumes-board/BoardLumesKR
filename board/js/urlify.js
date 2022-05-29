@@ -4,7 +4,7 @@
 function urlify(message) {
 
     let urlRegex = /((:?http|https|ftp|sftp)?:\/\/[^\s]+)/g;
-    let torrentMagnetRegex = /^magnet:\?xt=urn:btih:[0-9a-fA-F]{40,}.*$/;
+    let torrentMagnetRegex = /magnet:\?xt=urn:btih:[a-zA-Z0-9]*/g;
 
     // urlify URL
         // URL (HTTP/HTTPS/FTP/SFTP)
