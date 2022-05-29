@@ -35,6 +35,8 @@
         echo '<tbody>';
       
 
+    $column = 0;
+
     // table content
     foreach($boardData as $rows) {
         
@@ -47,9 +49,11 @@
             echo '<tr>';
                 echo '<th scope="row" style="text-align: center;">' . $messageID . '</th>';
                 echo '<td style="text-align: center;">' . $writerID . '</td>';
-                echo '<td style="word-break: break-all">' . $writerMessage . '</td>';
+                echo '<td style="word-break: break-all" class="boardMessages" id="boardMessageColumn' . $column . '">' . $writerMessage . '</td>';
                 echo '<td style="text-align: center; width:130px;">' . $messageDate . '</td>';
             echo '</tr>';
+
+        $column++;
 
     }
 
