@@ -17,7 +17,12 @@
 
     require("./common/dbconnection.php");
     
-    $query = "SELECT * FROM board ORDER BY idx DESC LIMIT 50";
+    // $query = "SELECT * FROM board ORDER BY idx DESC LIMIT 50";
+    $query = "SELECT board.*, member.role, member.nickname
+                FROM board, member 
+                    WHERE board.id = member.id 
+                        ORDER BY board.idx 
+                        DESC LIMIT 50";
     $stmt = $db->prepare($query);
     $stmt->execute();
 
@@ -46,9 +51,29 @@
         $messageDate        = $rows['date'];
         $writerIP           = $rows['ip'];
 
+        $writerRole         = $rows['role'];
+        $writerNickname     = $rows['nickname'];
+
             echo '<tr>';
                 echo '<th scope="row" style="text-align: center;">' . $messageID . '</th>';
-                echo '<td style="text-align: center;">' . $writerID . '</td>';
+
+                // role-based showing
+                if($writerRole == "admin") {
+                    echo '<td style="text-align: center;">' . '<b>' . $writerID  . '</b>'
+                            . '&nbsp;'
+                            . '<img class="adminBadge" src="/asset/usericon/verified_icon.png" width="20px" style="display: inline;">'
+                            . '</td>';
+                } else if($writerRole == "qa") {
+                    echo '<td style="text-align: center;">' . '<b>' . $writerID  . '</b>' . '<br>'
+                            . '<span class="badge bg-dark">QA' . '&nbsp'
+                                . '<span class="bi-check-circle-fill" style="color: mint;"></span>'
+                            . '</span>'
+                            . '</td>';
+                } else {
+                    // $writerRole == "user" (as a default)
+                    echo '<td style="text-align: center;">' . $writerID . '</td>';
+                }
+                
                 echo '<td style="word-break: break-all" class="boardMessages" id="boardMessageColumn' . $column . '">' . $writerMessage . '</td>';
                 echo '<td style="text-align: center; width:130px;">' . $messageDate . '</td>';
             echo '</tr>';
