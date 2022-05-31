@@ -1,6 +1,6 @@
 <p align = "center">
  <img src="https://img.shields.io/github/languages/code-size/lumes-board/BoardLumesKR">
- <img src="https://img.shields.io/github/languages/top/lumes-board/BoardLumesKR">
+ <img src="https://img.shields.io/tokei/lines/github/lumes-board/BoardLumesKR">
  <img src="https://img.shields.io/website?down_color=lightgray&down_message=offline&up_color=blue&up_message=online&url=http%3A%2F%2Fboard.lumes.kr">
 </p>
 
