@@ -62,6 +62,31 @@
     
                 <?php
 
+                die();
+
+            }
+            
+            if ($userInformation['isActivated'] === "FALSE"){
+
+                ?>
+    
+                    <script>
+        
+                        Swal.fire({
+                            icon: 'error',
+                            title: '로그인 불가',
+                            text: '인증되지 않은 계정입니다.',
+                            footer: '이메일 인증이 완료되지 않은 계정은 로그인하실 수 없습니다.'
+                        }).then((result) => {
+                            location.href = "./login.php";
+                        })
+        
+                    </script>
+    
+                <?php
+
+                die();
+
             }
 
             $passwordVerification = password_verify($userpassword, $hashedPassword);
