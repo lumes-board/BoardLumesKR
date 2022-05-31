@@ -30,6 +30,12 @@
         <?php include("board/showMessages.php"); ?>
         <script src="./board/js/urlify.js"></script>
 
+        <?php if(isset($_SESSION['id'])){ ?>
+            <!-- session이 있을 경우 필요한 파일 -->
+            <script src="./board/js/hotkeyToSendMessage.js"></script>
+        <?php } ?>
+        
+
     </body>
 
 </html>

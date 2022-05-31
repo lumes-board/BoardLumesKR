@@ -33,12 +33,12 @@
             <div class="form-floating">
                 <textarea class="form-control" id="messageContent" name="message"
                           placeholder="메시지를 남겨보세요... (~1,500 바이트)" id="floatingTextarea"
-                          style="height: 100px"></textarea>
+                          onkeypress="sendMessageViaHotkey(event)" style="height: 100px" autofocus></textarea>
                 <label for="floatingTextarea">메시지를 남겨보세요...</label>
             </div>
             
             
-            <button type="submit" class="btn btn-primary float-end" style="margin-top: 10px;">메시지 등록하기</button>
+            <button type="submit" class="btn btn-primary float-end" id="messageSubmitButton" style="margin-top: 10px;">메시지 등록하기</button>
             
 
             <button type="button" id="textLengthStatus" class="btn btn-secondary">
