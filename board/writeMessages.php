@@ -46,11 +46,17 @@
             </div>
             
             
-            <button type="submit" class="btn btn-primary float-end" id="messageSubmitButton" style="margin-top: 10px;">메시지 등록하기</button>
-            
+            <!-- <button type="submit" class="btn btn-primary float-end" id="messageSubmitButton" style="margin-top: 10px;">메시지 등록하기</button> -->
+            <button type="submit" class="button-82-pushable" role="button" id="messageSubmitButton" style="margin-top: 10px;">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text">
+                    메시지 등록하기 <i class="bi bi-shift-fill"></i>
+                </span>
+            </button>
 
             <button type="button" id="textLengthStatus" class="btn btn-secondary">
-                <span id="textLengthCounter">0 / 1,500 Bytes</span>
+                <span id="textLengthCounter"><i class="bi bi-speedometer"></i> 0 / 1,500 Bytes</span>
             </button>
                         
         </form>

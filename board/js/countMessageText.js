@@ -17,7 +17,7 @@ let textlengthProgressBar   = document.getElementById("textLengthProgressBar");
 writeForm.addEventListener("input", function (e){
 
     let textLength = getByteLengthOfUtf8String(writeForm.value);
-    const textCounterMessage = textLength.toLocaleString('ko-KR') + " / 1,500 Bytes";
+    const textCounterMessage = "<i class='bi bi-speedometer'></i>&nbsp;" + textLength.toLocaleString('ko-KR') + " / 1,500 Bytes";
     const progressBarWidth   = (textLength / 1500) * 100;
 
     textLengthCounter.innerHTML = textCounterMessage;
