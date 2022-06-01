@@ -115,8 +115,10 @@ CREATE TABLE IF NOT EXISTS `member` (
   `lastLoginIP` varchar(40) default NULL,
   `registrationTime` datetime NOT NULL,
   `registrationIP` varchar(40) NOT NULL,
+  `registrationHash` varchar(100) default NULL,
+  `isActivated` varchar(10) NOT NULL default 'FALSE',
   PRIMARY KEY  (`idx`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 ```
 
 2. `board` 테이블 : 유저들이 등록한 게시글이 저장되는 곳입니다.
