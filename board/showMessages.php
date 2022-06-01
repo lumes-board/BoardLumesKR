@@ -152,19 +152,19 @@
 
                 // role-based showing
                 if($writerRole == "admin") {
-                    echo '<td style="text-align: center;">' . '<b>' . $writerID  . '</b>'
+                    echo '<td style="text-align: center; min-width:100px;">' . '<b>' . $writerID  . '</b>'
                             . '&nbsp;'
                             . '<img class="adminBadge" src="/asset/usericon/verified_icon.png" width="20px" style="display: inline;">'
                             . '</td>';
                 } else if($writerRole == "qa") {
-                    echo '<td style="text-align: center;">' . '<b>' . $writerID  . '</b>' . '<br>'
+                    echo '<td style="text-align: center; min-width:100px;">' . '<b>' . $writerID  . '</b>' . '<br>'
                             . '<span class="badge bg-dark">QA' . '&nbsp'
                                 . '<span class="bi-check-circle-fill" style="color: mint;"></span>'
                             . '</span>'
                             . '</td>';
                 } else {
                     // $writerRole == "user" (as a default)
-                    echo '<td style="text-align: center;">' . $writerID . '</td>';
+                    echo '<td style="text-align: center; min-width:100px;">' . $writerID . '</td>';
                 }
                 
                 echo '<td style="word-break: break-all" class="boardMessages" id="boardMessageColumn' . $column . '">' . $writerMessage . '</td>';
