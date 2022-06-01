@@ -122,7 +122,9 @@
                 </label>
             </div>
 
-            <button type="button" id="registrationSubmitButton" class="btn btn-primary">가입하기</button>
+            <button type="submit" id="registrationSubmitButton" class="button-86" role="button">
+                <i class="bi bi-clipboard-check-fill"></i>&nbsp;&nbsp;가입하기
+            </button>
 
         </form>
         <!-- 회원가입 폼 끝 -->
