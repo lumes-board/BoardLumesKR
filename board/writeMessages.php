@@ -69,6 +69,16 @@
 
             <input class="form-control" id="writer" type="text" value="@[ANONYMOUS]" readonly>
 
+            <input type="hidden" id="g-recaptcha" name="g-recaptcha">
+
+            <div id="tickerNotification">
+                <ul id="tickerNotificationRoller">
+                    <li>메시지는 <b><kbd>Ctrl</kbd> + <kbd>Enter</kbd></b> 키로 바로 전송하세요.</li>
+                    <li><b>URL</b>을 입력하면 링크가 걸립니다.</li>
+                    <li><b><a href="https://github.com/lumes-board/BoardLumesKR">Github</a></b>를 통해 기능을 살펴보세요.</li>
+                </ul>
+            </div>
+
 
             <div class="form-floating">
                 <textarea class="form-control" id="messageContent" 
