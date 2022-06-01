@@ -87,9 +87,14 @@
 
         $stmt->execute();
 
-        $isRegistererDuplicated = $stmt->fetchAll(PDO::FETCH_NUM);
+        $isRegistererDuplicated = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if(empty($isRegistererDuplicated)) {
+        // 만약 이메일 인증이 되지 않아 활성화에 실패한 계정이 있는 경우, 그 계정은 삭제하고
+        // 다시 계정을 만들 수 있도록 해야 한다.
+
+        var_dump($isRegistererDuplicated[0]['isActivated'] === "FALSE");
+
+        if(empty($isRegistererDuplicated) or $isRegistererDuplicated[0]['isActivated'] === "FALSE") {
 
             // 중복된 유저 없음, 회원가입 가능!
 
@@ -103,25 +108,29 @@
             //      lastLoginIP       = NULL (로그인시 반영됨)
             //
 
-            // 이메일 부분 테스트 시 SMTP 서버가 되는 곳에서 할 것.
-            // **note**
-            //  특정 mail 서비스에서 한글이 깨지는 문제가 발생함. 
-            //  major한 서비스에서는 안 깨지는 걸로 봐서 별 문제는 아닌 것으로 간주됨.
+            if($isRegistererDuplicated[0]['isActivated'] === "FALSE") {
 
-            $registrationHash = md5(rand(0,500000000000000000));            // 계정 활성화용 해시
-            $isActivated = "FALSE";                                         // 계정 상태, 기본은 비활성화되었으며, 따로 활성화 절차를 거쳐야 이용이 가능함.
+                // 인증에 실패한 계정을 다시 만들려고 하는 경우,
+                // 계정을 지운 다음 다시 만들 수 있도록 한다.
+                try{
+                    $query = "DELETE FROM member
+                            WHERE id = :id or email = :email";
+                    $stmt = $db ->prepare($query);
 
-            if($_SERVER['REMOTE_ADDR'] == "::1") {
-                // for local test
-                // id/verification/signupVerifier.php
-                $emailVerificationURL = "localhost/id/verification/signupVerifier.php?userID=" . $id . "&userEmail=" . $email . "&verifyID=" . $registrationHash;
-            } else {
-                // for actual test
-                $emailVerificationURL = "http://board.lumes.kr/id/verification/signupVerifier.php?userID=" . $id . "&userEmail=" . $email . "&verifyID=" . $registrationHash;
+                    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+                    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+
+                    $stmt->execute();
+                } catch(PDOException $PDOerr) {
+                    die($PDOerr -> getMessage());
+                }
+
             }
 
-            $query = "INSERT INTO member (id, nickname, password, email, registrationTime, registrationIP, registrationHash, isActivated) 
-                      VALUES (:idInput, :nicknameInput, :passwordInput, :emailInput, :registrationTime, :registrationIP, :registrationHash, :isActivated)";
+            $isActivated = "FALSE";
+
+            $query = "INSERT INTO member (id, nickname, password, email, registrationTime, registrationIP, isActivated) 
+                      VALUES (:idInput, :nicknameInput, :passwordInput, :emailInput, :registrationTime, :registrationIP, :isActivated)";
             $stmt = $db->prepare($query);
 
             $stmt->bindParam(':idInput', $id, PDO::PARAM_STR);
@@ -130,7 +139,6 @@
             $stmt->bindParam(':emailInput', $email, PDO::PARAM_STR);
             $stmt->bindParam(':registrationTime', $datetime, PDO::PARAM_STR);
             $stmt->bindParam(':registrationIP', $userIPAddress, PDO::PARAM_STR);
-            $stmt->bindParam(':registrationHash', $registrationHash, PDO::PARAM_STR);
             $stmt->bindParam(':isActivated', $isActivated, PDO::PARAM_STR);
 
             
@@ -140,40 +148,9 @@
                 $stmt->execute();
                 $db->commit();
 
-                // 이메일 인증하기
-
-                $emailReceiver = $email;
-
-                $emailSubject  = "[board.lumes.kr] 회원가입 인증 확인 이메일";
-                $emailSubject  = '=?UTF-8?B?'.base64_encode($emailSubject).'?='; 
-
-                $emailContents = '<p>board.lumes.kr에 회원가입 하신 것을 환영합니다.</p><br>';
-                $emailContents .= '<p>거의 다 왔습니다! 아래 인증 메일 코드를 이용해 회원가입을 완료해 주시기 바랍니다.</p><br>';
-                $emailContents .= '<p>아래 링크를 클릭하여 인증하시면 바로 인증 절차가 진행됩니다.</p><br>';
-                $emailContents .= '<a href="'.$emailVerificationURL.'"><b>'.$emailVerificationURL.'</b></a><br>';
-
-                $emailHeader = "From:noreply@lumes.kr\r\n";
-                $emailHeader .= "Content-Type: text/html;\r\n";
-
-
-                mail($emailReceiver, $emailSubject, $emailContents, $emailHeader);
-
-
-                // 여기까지 잘 완료되면, 회원가입 성공. 단, 이메일 인증이 요구될 것임.
-
-                ?>
-
-                <script>
-                    Swal.fire({
-                        icon: 'success',
-                        title: '확인 이메일 전송됨',
-                        footer: '이메일이 전송되었습니다. 이메일 인증을 실시하여 회원가입을 완료하고 로그인해 서비스를 이용하세요.'
-                    }).then((result) => {
-                        location.href = './signup.php';
-                    })
-                </script>
-
-        <?php
+                $locationURL = 'sendSingupVerificationEmail.php?id=' . $id . '&email=' . $email;
+                header("Location: $locationURL");
+                  
 
             } catch(PDOException $PDOerr) {
 
