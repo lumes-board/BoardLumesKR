@@ -56,7 +56,12 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="패스워드를 입력하세요! 쉿! 들키지 않게..">
             </div>
 
-            <button type="submit" id="loginButton" class="btn btn-primary d-flex justify-content-center"><b>로그인!</b></button>
+            <!-- <button type="submit" id="loginButton" class="btn btn-primary d-flex justify-content-center"><b>로그인!</b></button> -->
+            <button type="submit" id="loginButton" class="cybr-btn d-flex justify-content-center">
+                LOGIN<span aria-hidden>_</span>
+                <span aria-hidden class="cybr-btn__glitch">LOGIN_</span>
+                <span aria-hidden class="cybr-btn__tag">GO?</span>
+            </button>
 
         </form>
 
