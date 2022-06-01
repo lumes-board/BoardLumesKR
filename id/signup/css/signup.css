@@ -1,6 +1,19 @@
+#accordionNotification1 {
+
+    font-family: "general";
+
+    width: 50%;
+
+    margin: auto;
+    border-radius: 10px;
+    padding-top: 15px;
+
+}
+
 .registration-form {
 
     font-family: "general";
+    position: absolute;
 
     width: 50%;
 

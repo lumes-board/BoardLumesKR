@@ -39,6 +39,22 @@
         </nav>
         <!-- 간단한 상단 바 끝 -->
 
+        <!-- 알림 -->
+        <div class="accordion" id="accordionNotification1">
+            <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                📝보안 강화를 위한 회원가입시 이메일 인증 안내
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    회원가입 기능을 남용하여 도배를 하는 경우가 발생하여 <b>모든 회원가입에는 이메일 인증이 요구</b>됩니다. 실제 사용하는 이메일 주소를 사용하여 이번 인증 뿐만 아니라 향후 계정 복구 등에도 문제가 없도록 주의해 주세요.
+                </div>
+            </div>
+        </div>
+        <!-- 알림 끝 -->
+
         <!-- 회원가입 폼 -->
         <form class="registration-form" action="signupProcess.php" enctype="multipart/form-data" method="POST">
 
@@ -92,7 +108,7 @@
                 <div class="col-md-10 form-floating">
                     <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="&nbsp;&nbsp;유저 이메일" aria-describedby="userEmailHelp">
                     <label for="userEmail">&nbsp;&nbsp;이메일 주소</label>
-                    <div id="userEmailHelp" class="form-text">나중에 인증 등에 필요할 수 있으니 사용하시는 이메일 주소를 입력하세요.</div>
+                    <div id="userEmailHelp" class="form-text">회원가입시 <b>이메일 인증이 필요</b>하므로 실제 사용하는 이메일을 적으세요.</div>
                 </div>
                 <div class="col">
                     <button type="button" id="checkEmailValidityButton" class="btn btn-secondary">E-mail Check</button>
