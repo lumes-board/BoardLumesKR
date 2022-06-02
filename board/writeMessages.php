@@ -56,7 +56,7 @@
             </button>
 
             <button type="button" id="textLengthStatus" class="btn btn-secondary">
-                <span id="textLengthCounter"><i class="bi bi-speedometer"></i> 0 / 1,500 Bytes</span>
+                <span id="textLengthCounter"><i class="bi bi-speedometer"></i> 0 / 1,500 Chars</span>
             </button>
                         
         </form>

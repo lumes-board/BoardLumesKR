@@ -1,12 +1,7 @@
-// 글자 수 길이 측정 (향상된 For문을 이용한 성능 대폭 향상 버전)
-// https://programmingsummaries.tistory.com/239
-function getByteLengthOfUtf8String(s) {
-    if (s != undefined && s != "") {
-        for (b = i = 0; c = s.charCodeAt(i++); b += c >> 11 ? 3 : c >> 7 ? 2 : 1);
-        return b;
-    } else {
-        return 0;
-    }
+function getStringCharCount(string){
+
+    return string.length;
+
 }
 
 
@@ -16,8 +11,8 @@ let textlengthProgressBar   = document.getElementById("textLengthProgressBar");
 
 writeForm.addEventListener("input", function (e){
 
-    let textLength = getByteLengthOfUtf8String(writeForm.value);
-    const textCounterMessage = "<i class='bi bi-speedometer'></i>&nbsp;" + textLength.toLocaleString('ko-KR') + " / 1,500 Bytes";
+    let textLength = getStringCharCount(writeForm.value);
+    const textCounterMessage = "<i class='bi bi-speedometer'></i>&nbsp;" + textLength.toLocaleString('ko-KR') + " / 1,500 Chars";
     const progressBarWidth   = (textLength / 1500) * 100;
 
     textLengthCounter.innerHTML = textCounterMessage;
