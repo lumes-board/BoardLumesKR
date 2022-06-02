@@ -41,26 +41,44 @@
         </nav>
         <!-- 간단한 상단 바 끝 -->
         
-        <form class="login-form" action="loginProcess.php" method="POST">
+        <form class="login-form" id="loginForm" action="loginProcess.php" method="POST">
 
-            <h1 id="welcomeText">🚀 LOGIN</h1>
+            <h1 id="welcomeText">Identification <i class="bi bi-fingerprint"></i></h1>
 
             <input type="hidden" id="g-recaptcha" name="g-recaptcha">
 
+            <label for="text">ID</label>
             <div class="form-group">
-                <label for="text">ID</label>
-                <input type="id" class="form-control" id="id" name="id" placeholder="ID를 입력하세요.">
-            </div>
-            <div class="form-group">
-                <label for="password">비밀번호</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="패스워드를 입력하세요! 쉿! 들키지 않게..">
+                <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend">
+                        <i class="bi bi-person-fill"></i>
+                    </span>
+                    <input type="id" class="form-control" id="id" name="id" placeholder="ID를 입력하세요..." 
+                            required placeholder="Enter Name"
+                            oninvalid="this.setCustomValidity('ID를 반드시 입력해 주세요! ><')"
+                            oninput="this.setCustomValidity('')">
+                </div>
             </div>
 
-            <!-- <button type="submit" id="loginButton" class="btn btn-primary d-flex justify-content-center"><b>로그인!</b></button> -->
-            <button type="submit" id="loginButton" class="cybr-btn d-flex justify-content-center">
-                LOGIN<span aria-hidden>_</span>
-                <span aria-hidden class="cybr-btn__glitch">LOGIN_</span>
-                <span aria-hidden class="cybr-btn__tag">GO?</span>
+            <label for="password">비밀번호</label>
+            <div class="form-group">
+                <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend">
+                        <i class="bi bi-key-fill"></i>
+                    </span>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="패스워드를 입력하세요! 쉿! 들키지 않게.."
+                            required placeholder="Enter Name"
+                            oninvalid="this.setCustomValidity('비밀번호도 꼭 입력해 주세요! >_<')"
+                            oninput="this.setCustomValidity('')">
+                </div>
+            </div>
+
+            <button class="button-82-pushable d-flex justify-content-centers" type="submit" id="loginButton" role="button">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text">
+                    LOGIN
+                </span>
             </button>
 
         </form>
