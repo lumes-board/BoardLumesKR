@@ -117,7 +117,18 @@
                     <i class="bi bi-envelope-fill"></i> 이메일 재전송하기
                 </span>
             </button>
+
+            <button type="button" class="button-82-pushable" 
+                    id="goToLoginPage" onclick="location.href='/id/login/login.php'" role="button" style=" display: inline-block;">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text">
+                    <i class="bi bi-door-open-fill"></i> 로그인 창으로 이동
+                </span>
+            </button>
+            
         </form>
+
     </body>
 
 </html>
