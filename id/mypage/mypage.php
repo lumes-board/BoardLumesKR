@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="./css/mypage.css">
         <link rel="shortcut icon" href="../../favicon/favicon.ico">
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
         <?php include('../../common/resource.html'); ?>
 
     </head>
@@ -43,41 +45,84 @@
 
         ?>
 
-        <!-- 유저 정보 테이블 -->
-        <table class="table text-center" id="userInfoTable">
-            <thead>
-                <tr class="table-dark">
-                    <th>ID</th>
-                    <th>이메일</th>
-                    <th>닉네임</th>
-                    <th>보유경험치</th>
-                    <th>경험치송금량</th>
-                    <th>작성한 게시글</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><b><?php echo $_SESSION['id'] ?><b></td>
-                    <td><?php echo $email ?></td>
-                    <td><?php echo $nickname ?></td>
-                    <td><?php echo number_format($exp) ?> <span style="color: gray; ">EXP</span></td>
-                    <td><?php echo number_format($expTransactionQty) ?> <span style="color: gray; ">EXP</span></td>
-                    <td><?php echo number_format($guestbookQty) ?> <span style="color: gray; ">개</span></td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- 유저 정보 테이블 끝 -->
-
-        <!-- 유저 개인정보 변경 버튼 그룹 -->
-
-        <div class="btn-group d-flex justify-content-center" role="group" id="changeUserInfoButtonGroup">
-            <button type="button" class="btn btn-outline-primary" onclick="window.open('/id/updateUserInfo/email/changeEmail.php')">Email 주소 변경하기</button>
-            <button type="button" class="btn btn-outline-primary" onclick="window.open('/id/updateUserInfo/nickname/changeNickname.php')">닉네임 변경하기</button>
-            <button type="button" class="btn btn-outline-primary" onclick="window.open('/id/updateUserInfo/password/changePassword.php')">비밀번호 변경하기</button>
+        <div class="mypageImages">
+            <div class="mypageBackgroundImageCover">
+                <img src="/asset/images/defaultMypageBackgroundImage/defaultBG.jpg">
+            </div>
+            <div class="mypageUserProfileImageCover">
+                <img src="/asset/images/defaultMypageProfileImage/defaultProfile.png">
+            </div>
         </div>
 
-        <!-- 유저 개인정보 변경 버튼 그룹 끝 -->
+        <div class="userInfoBrief">
+            <div class="userID">
+                <b>
+                    <!-- 참조 구문 연장을 통해 at기호와 ID 붙이기 -->
+                    <span class="atMarkID">@ </span><!--
+                    --><span><?php echo $_SESSION['id'] ?></span>
+                    <!-- 유저 뱃지 -->
+                </b>
+            </div>
+            <div class="userNickname">
+                <i class="bi bi-pen-fill"></i>
+                <?php echo $nickname ?>
+            </div>
+            <div class="userEmail">
+                <i class="bi bi-envelope"></i>
+                <?php echo $email ?>
+            </div>
+            <div class="btn-group me-2 changeInfoGroup">
+                <button class="changeUserInfoButton" role="button" onclick="window.open('/id/updateUserInfo/email/changeEmail.php')">이메일 변경</button>
+                <button class="changeUserInfoButton" role="button" onclick="window.open('/id/updateUserInfo/nickname/changeNickname.php')">닉네임 변경</button>
+                <button class="changeUserInfoButton" role="button" onclick="window.open('/id/updateUserInfo/password/changePassword.php')">비밀번호 변경</button>
+            </div>
+        </div>
+
+        <div class="userExpStatus">
+            <div class="statTabTitle">
+                <i class="bi bi-pie-chart-fill"></i> 경험치
+            </div>
+            <span class="userExpDigit">
+                <?php echo number_format($exp) ?>
+            </span>
+            <span class="userExpUnit">
+                EXP
+            </span>
+            <div class="userExpChart" >
+                <canvas id="userExpChartByJS"></canvas>
+            </div>
+        </div>
 
     </body>
 
 </html>
+
+<script>
+
+    let context = document
+                .getElementById('userExpChartByJS')
+                .getContext('2d');
+    
+    const data = {
+        // labels: [
+        //     'Red',
+        //     'Blue',
+        //     'Yellow'
+        // ],
+        datasets: [{
+            label: '경험치 세트',
+            data: [<?php echo $exp ?>, 50, 100],
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+            ],
+            hoverOffset: 4
+        }],
+    };
+    
+    let userExpChart = new Chart(context, {
+            type: 'doughnut',
+            data: data
+        });
+</script>
