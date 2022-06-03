@@ -39,9 +39,23 @@
 
             $email                  = $userInfoData[0]["email"];
             $nickname               = $userInfoData[0]["nickname"];
-            $exp                    = $userInfoData[0]["exp"];
             $expTransactionQty      = $userInfoData[0]["expTransactionQty"];
             $guestbookQty           = $userInfoData[0]["guestbookQty"];
+
+            // ---------------------------------------------- //
+            // 경험치는 따로 가져오기
+            $query = "SELECT * FROM exp where id = :id";
+            $stmt = $db->prepare($query);
+            $stmt->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR); 
+            
+            $stmt->execute();
+
+            $exp = $stmt->fetch(PDO::FETCH_ASSOC);
+            $registrationExp = $exp["registrationExp"];
+            $loginExp        = $exp["loginExp"];
+            $boardExp        = $exp["boardExp"];
+            $exp             = $registrationExp + $loginExp + $boardExp;
+            // $exp = $exp[0];
 
         ?>
 
@@ -88,8 +102,41 @@
             <span class="userExpUnit">
                 EXP
             </span>
-            <div class="userExpChart" >
+            <div class="userExpChart">
                 <canvas id="userExpChartByJS"></canvas>
+            </div>
+            <div class="userExpTable">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="text-align: center;">항목</th>
+                            <th scope="col" style="text-align: center;">EXP</th>
+                            <th scope="col" style="text-align: center;">%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"  style="text-align: center; color:#AD5600;">회원가입</th>
+                            <td style="text-align: right;"><?php echo number_format($registrationExp) ?></td>
+                            <td style="text-align: right;"><?php echo round(($registrationExp / $exp) * 100, 2) ?>%</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"  style="text-align: center; color:#FF0062;">로그인</th>
+                            <td style="text-align: right;"><?php echo number_format($loginExp) ?></td>
+                            <td style="text-align: right;"><?php echo round(($loginExp / $exp) * 100, 2) ?>%</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"  style="text-align: center; color:#009EE5;">게시판 글쓰기</th>
+                            <td style="text-align: right;"><?php echo number_format($boardExp) ?></td>
+                            <td style="text-align: right;"><?php echo round(($boardExp / $exp) * 100, 2) ?>%</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"  style="text-align: center;">총합</th>
+                            <td style="text-align: right; font-weight: bold;"><?php echo number_format($exp) ?></td>
+                            <td style="text-align: right;">100.00%</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -111,11 +158,15 @@
         // ],
         datasets: [{
             label: '경험치 세트',
-            data: [<?php echo $exp ?>, 50, 100],
+            data: [
+                <?php echo $registrationExp ?>, 
+                <?php echo $loginExp ?>,
+                <?php echo $boardExp ?>
+            ],
             backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
+                '#AD5600',
+                '#FF0062',
+                '#009EE5'
             ],
             hoverOffset: 4
         }],
