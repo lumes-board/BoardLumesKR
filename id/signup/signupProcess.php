@@ -141,11 +141,20 @@
             $stmt->bindParam(':registrationIP', $userIPAddress, PDO::PARAM_STR);
             $stmt->bindParam(':isActivated', $isActivated, PDO::PARAM_STR);
 
+            $registrationExp = 1000000;
+            $query = "INSERT INTO exp (id, registrationExp) 
+                      VALUES (:id, :registrationExp)";
+            $stmt2 = $db->prepare($query);
+            $stmt2->bindParam(":id", $id, PDO::PARAM_STR);
+            $stmt2->bindParam(":registrationExp", $registrationExp, PDO::PARAM_INT);
+
+
             
             try {
 
                 $db->beginTransaction();
                 $stmt->execute();
+                $stmt2->execute();
                 $db->commit();
 
                 $locationURL = 'sendSingupVerificationEmail.php?id=' . $id . '&email=' . $email;

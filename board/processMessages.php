@@ -70,13 +70,20 @@
 
             // 유저 통계 업데이트
             $updateUserStatus = "UPDATE member 
-                                  SET exp = exp + :userEXPReward, guestbookQty	= guestbookQty + 1 
+                                  SET guestbookQty	= guestbookQty + 1 
                                    WHERE id = :id";
             $stmt = $db->prepare($updateUserStatus);
-            $stmt->bindParam(':userEXPReward', $userExpAward, PDO::PARAM_STR); 
             $stmt->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);
 
+            $addUserExp = "UPDATE exp
+                            SET boardExp = boardExp + :userExpAward
+                             WHERE id = :id";
+            $stmt2 = $db->prepare($addUserExp);
+            $stmt2->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR); 
+            $stmt2->bindParam(':userExpAward', $userExpAward, PDO::PARAM_STR); 
+
             $stmt->execute();
+            $stmt2->execute();
             
 
             echo '<script>location.href="../index.php"</script>';

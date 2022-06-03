@@ -47,16 +47,24 @@
                 // 오류를 없애기 위해 무조건 DB에서 데이터를 그때그때 받아와서 사용
                 header('Content-Type: text/html; charset=utf-8');
 
-                $query = "SELECT * FROM member where id = :id";
+                $query = "SELECT registrationExp + loginExp + boardExp FROM exp where id = :id";
                 $stmt = $db->prepare($query);
                 $stmt->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR); 
 
                 $stmt->execute();
 
+                $exp = $stmt->fetch(PDO::FETCH_NUM);
+                $exp = $exp[0];
+
+                // ---------------------------------------------------------- //
+
+                $query = "SELECT * FROM member where id = :id";
+                $stmt = $db->prepare($query);
+                $stmt->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR); 
+                $stmt->execute();
+
                 $userInformation = $stmt->fetchAll();
                 $userInformation = $userInformation[0];
-
-                $exp = $userInformation['exp'];
 
                 // 중간에 계정 정지당한 경우
                 if($userInformation['password'] === "redacted") {
