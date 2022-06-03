@@ -66,7 +66,7 @@
             $stmt->execute($addMessageOnBoardData);
             $db->commit();
 
-            $userExpAward = rand(500, 800);
+            $userExpAward = rand(50000, 80000);
 
             // 유저 통계 업데이트
             $updateUserStatus = "UPDATE member 

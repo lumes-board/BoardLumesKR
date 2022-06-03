@@ -20,7 +20,7 @@ $("#loggeduser").on("click", function () {
 });
 
 $("#exp").on("click", function () {
-    toastr["success"]("방명록에 댓글을 남기시면 개당 500EXP ~ 800EXP의 경험치를 드려요!", "EXP");
+    toastr["success"]("방명록에 댓글을 남기시면 개당 50,000EXP ~ 80,00EXP의 경험치를 드려요!", "EXP");
 });
 
 $("#logout").on("click", function () {
