@@ -95,45 +95,7 @@
 ?>
   ```
   <br><br>
-- **데이터베이스** 테이블 구조
-1. `member` 테이블 : 사용자들의 정보에 대한 내용을 다룹니다.
-```sql
---
--- 테이블 구조 `member`
---
-
-CREATE TABLE IF NOT EXISTS `member` (
-  `idx` int(20) NOT NULL auto_increment,
-  `id` varchar(30) NOT NULL,
-  `nickname` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `exp` double NOT NULL default '1000',
-  `expTransactionQty` double NOT NULL default '0',
-  `guestbookQty` int(20) NOT NULL default '0',
-  `role` varchar(30) NOT NULL default 'user',
-  `lastLoginTime` datetime default NULL,
-  `lastLoginIP` varchar(40) default NULL,
-  `registrationTime` datetime NOT NULL,
-  `registrationIP` varchar(40) NOT NULL,
-  `registrationHash` varchar(100) default NULL,
-  `isActivated` varchar(10) NOT NULL default 'FALSE',
-  PRIMARY KEY  (`idx`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
-```
-
-2. `board` 테이블 : 유저들이 등록한 게시글이 저장되는 곳입니다.
-```sql
---
--- 테이블 구조 `board`
---
-
-CREATE TABLE IF NOT EXISTS `board` (
-  `idx` int(30) NOT NULL auto_increment,
-  `id` varchar(30) NOT NULL,
-  `message` varchar(1500) NOT NULL,
-  `date` datetime NOT NULL,
-  `ip` varchar(40) NOT NULL COMMENT 'login.lumes.kr 멤버들 목록',
-  PRIMARY KEY  (`idx`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
-```
+- **데이터베이스** 테이블 구조는 `/common/database/` 에 SQL 파일 형태로 있으니 참고하세요.
+ - `member.sql` : 이 게시판을 사용하는 사용자들에 대한 정보들을 담는 테이블입니다.
+ - `board.sql` : 게시판에 등록된 게시글에 대한 정보들을 담는 테이블입니다.
+ - `exp.sql` : 게시판 사용자들의 경험치(exp)에 대한 정보들을 담는 테이블입니다.
