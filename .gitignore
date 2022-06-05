@@ -3,3 +3,6 @@
 
 # reCAPTCHA v3 사이트 키 정보가 담긴 아래 파일은 github Repository에 올리지 않음
 /common/reCAPTCHA/
+
+#유저들의 프로필 사진들은 굳이 올릴 필요가 없음.
+/asset/userdata/profilePicture

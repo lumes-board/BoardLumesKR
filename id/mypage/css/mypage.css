@@ -33,10 +33,39 @@
         position: absolute;
         
         top: 150px;
-        left: 10%;
+        left: 9.8vw;
         width: 160px;
-        border-radius: 80px;
+        height: 160px;
+        border-radius: 50%;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    }
+
+    .mypageImages > .mypageUserProfileImageCover > .profileImageOverlay {
+
+        position: relative;
+
+        font-family: "general";
+
+        top: -5px;
+        left: 11.1vw;
+        width: 120px;
+
+        background-color: gray;
+
+        color: white;
+        opacity: 0%;
+        text-align: center;
+        transition: .5s ease;
+
+    }
+
+    .mypageImages > .mypageUserProfileImageCover:hover .profileImageOverlay {
+
+        position: relative;
+
+        opacity: 100%;
+        cursor: pointer;
 
     }
 
@@ -92,7 +121,7 @@
 
         position: relative;
         
-        left: 44vw;
+        left: 35vw;
         top: -13vh;
     
     }

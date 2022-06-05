@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="./css/mypage.css">
         <link rel="shortcut icon" href="../../favicon/favicon.ico">
 
+        <!-- chart -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <?php include('../../common/resource.html'); ?>
@@ -63,8 +64,24 @@
             <div class="mypageBackgroundImageCover">
                 <img src="/asset/images/defaultMypageBackgroundImage/defaultBG.jpg">
             </div>
-            <div class="mypageUserProfileImageCover">
-                <img src="/asset/images/defaultMypageProfileImage/defaultProfile.png">
+            <div class="mypageUserProfileImageCover" id="mypageUserProfileImageCover">
+                <!-- 유저 프로필 사진 -->
+                <?php
+
+                    $profileImagePath = "../../asset/userdata/profilePicture/{$_SESSION['id']}.png";
+                    if(file($profileImagePath)){
+                        // 유저가 설정한 프로필 사진이 있음
+                        echo '<img src="' . $profileImagePath . '" id="mypageUserProfileImage">';
+                    }else{
+                        // 유저가 설정한 프로필 사진이 없음 --> default 사진 적용
+                        echo '<img src="/asset/images/defaultMypageProfileImage/defaultProfile.png" id="mypageUserProfileImage">';
+                    }
+
+                ?>
+                <h5 class="profileImageOverlay" onclick="window.open('/id/updateUserInfo/profile/uploadProfilePicture.php')">
+                    클릭해 프로필 <br>
+                    사진 변경
+                </h5>
             </div>
         </div>
 
@@ -86,6 +103,7 @@
                 <?php echo $email ?>
             </div>
             <div class="btn-group me-2 changeInfoGroup">
+                <!-- <button class="changeUserInfoButton" role="button" onclick="window.open('/id/updateUserInfo/profile/changeProfilePicture.php')">프로필 사진 변경</button> -->
                 <button class="changeUserInfoButton" role="button" onclick="window.open('/id/updateUserInfo/email/changeEmail.php')">이메일 변경</button>
                 <button class="changeUserInfoButton" role="button" onclick="window.open('/id/updateUserInfo/nickname/changeNickname.php')">닉네임 변경</button>
                 <button class="changeUserInfoButton" role="button" onclick="window.open('/id/updateUserInfo/password/changePassword.php')">비밀번호 변경</button>
